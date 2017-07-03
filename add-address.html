@@ -1,0 +1,95 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+   <meta charset="UTF-8">
+<title>新增地址</title> 
+<link rel="stylesheet" href="css/style1.css"/>
+<style>
+/*布局*/
+	.layout{
+			display:flex;
+			flex-direction:row;
+			justify-content:flex-start;
+			align-items:center;
+			border-bottom:solid 10px #F9F9F9;
+			}
+
+	
+	
+	.bar-nav{justify-content:flex-start;}
+	 h1{margin-left:25%;}
+	 li a{margin-left:1.4rem;}
+	 
+/*文字框*/
+input{
+		border:none;
+		width:80%;}
+/*底部*/
+.save{
+		display:block;
+		width:100%;
+		text-align:center;
+		padding:1.63125rem 0;
+		color:white;
+		background-color:#cc0000;
+		position:fixed; 
+		bottom:0px;}
+
+	 
+/*字体*/
+ul,input,a{font-size:2.6875rem;}
+li a, input{color:grey;}
+</style>
+<script type="text/javascript">
+	window.onload= function(){
+		 var h = document.getElementById("save").offsetHeight;
+		 document.getElementById("f").style.marginBottom=h+'px';;
+		}
+
+</script>
+</head> 
+<body>
+<!---标题、返回---->
+<header class="bar bar-nav" >
+	<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+	<h1 class="title">添加收货地址</h1>
+  
+</header>
+<!---新增地址表单---->
+<ul id="f">
+	<li class="layout">
+	<p>省份：</p>
+	<a>请选择</a>
+	</li>
+	<li class="layout">
+	<p>城市：</p>
+	<a>请选择</a>
+	</li>
+	<li class="layout">
+	<p>区域：</p>
+	<a>请选择</a>
+	</li>
+	<li class="layout">
+	<p>姓名：</p>
+	<input type="text" placeholder="请输入收货人姓名"/>
+	</li>
+	<li class="layout">
+	<p>地址：</p>
+	<input type="text" placeholder="请输入您的详细收货地址"/>
+	</li>
+	<li class="layout">
+	<p>电话：</p>
+	<input type="text" placeholder="请输入能够联系您的手机号码"/>
+	</li>
+	<li class="layout">
+	<p>邮编：</p>
+	<input type="text" placeholder="请输入当地邮编"/>
+	</li>
+	<li class="layout">
+	<p>邮箱：</p>
+	<input type="text" placeholder="请输入能够联系您的电子邮箱"/>
+	</li>
+</ul>
+<a class="save" id="save">保存地址</a>
+</body> 
+</html>

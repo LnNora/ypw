@@ -1,0 +1,12 @@
+
+1.写函数：判断全选radio是否被选中，如果选中，那么上面所有radio都设为选           中状态；如果未选中，那么上面所有radio都设为未选中状态。
+
+2.添加事件：为全选radio添加事件，触发1中的函数
+
+3.添加事件，为全选radiot添加事件，触发单选时的函数（见记事本更改radio图片.txt）
+
+4.判断：如果每个radio都被选中了，那么全选按钮也应该是选中状态；如果有其中一个radio未选中，那么全选按钮为非选中状态。可以将radio选中个数与总个数对比，来判断。
+
+
+js使一个radio是checked状态：
+    document.getElementById("radio1").checked=true

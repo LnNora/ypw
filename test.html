@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>test冒泡</title>
+	
+	
+	<style>
+	#parent{width:100px;height:100px;border:solid 1px;}
+	#n{width:50px;height:50px;border:solid 1px;}
+	body{border:solid 1px;}
+	</style>	
+	</head>
+	<body>
+	 <div id="parent">
+		<div id="n">
+		</div>
+	 </div>
+	</body>
+	
+	<script type="text/javascript">
+    //定义禁止冒泡的方法
+    var stop = function(e){
+		              e.stopPropagation();
+					  }
+	//获取元素，定义方法，添加事件。实现点击后展开导航的效果
+    var n = document.getElementById('n');
+	function unfold(){
+				alert("N");
+				}
+	n.addEventListener("click",unfold,false);
+	n.addEventListener("click",stop,false);
+	//获取body元素，定义方法，添加事件。实现点击其他区域收起导航的效果
+	var other = document.getElementsByTagName('body')[0];
+	function fold(){
+	            alert("hi");
+				}
+	other.addEventListener("click",fold,false);
+	
+				
+    
+</script>
+</html>
+
+
+
+
+
+				
+    
+</script>

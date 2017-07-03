@@ -1,0 +1,35 @@
+
+<!DOCTYPE html> 
+<html> 
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title> 
+	<script type="text/javascript"> 
+	    
+		window.onload=function s(){
+		    a=document.getElementById('article').innerHTML;
+			var n=a.length;
+		    if(n>72){
+				b=a.slice(0,71);
+				document.getElementById('article').innerHTML=b;
+				}else{
+				document.getElementById('check').style.display="none";
+				}
+		}
+		function checkAll(){
+			   if(document.getElementById('check').innerHTML=="查看全部"){
+			   document.getElementById('check').innerHTML="收起";
+			   document.getElementById('article').innerHTML=a;
+			   }else{
+			   document.getElementById('check').innerHTML="查看全部";
+			    document.getElementById('article').innerHTML=b;
+			   }
+		}
+	</script> 
+	</head> 
+	
+<body> 
+	<p id="article">1587年的历史事件也是以后掀起波澜的机缘。换一个视角来解读历史，世界变得更立体。1587年，在西欧历史上为西班牙舰队全部出动征英的前一年。当lalalallalalalal</p>
+	<a id="check" onclick="checkAll()">查看全部</a>
+</body> 
+</html>

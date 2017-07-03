@@ -1,0 +1,21 @@
+1.写一个ul导航
+2.确定ul位置
+3.默认为收起状态
+4.收起时，点击右上角弹出；弹出时，点击页面其他地方收起
+
+
+JS改变样式：document.getElementById("XX").style.属性='属性值';
+
+判断display是否为none：
+	if（document.getElementById("XX").style.display=''）
+
+获取body: doucumnet.body或document.getElementsByTagName("body")[0];
+
+问题：在谷歌和搜狐浏览器中都实现了点击右上角弹出导航，点击其他地方收起导航的功能；但是经测试，在safari中：
+不用冒泡方法，点击有事件的子元素，会触发body元素；单点body，无法触发；
+用冒泡方法，点击子元素，成功阻止冒泡；单点body，无法触发。
+
+解决日志：将body的click事件改为touchend就可以了（为啥啊为啥啊）
+          又出现一个问题，点击导航也收起了啊 。
+          最后放弃了touchend。
+          safari奇怪的冒泡法，如果子元素没有绑定点击事件，点击后会一直冒泡到Body的下一级元素。所以我就建了个DIV，作为BODY下级。

@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+   <meta charset="UTF-8">
+<title>商品详情</title> 
+<link rel=stylesheet href="css/style1.css"/>
+<link rel=stylesheet href="css/book-detail-style.css"/>
+
+</head> 
+<body>
+<div id="container">
+ <!---标题、返回和顶部导航---->
+<header class="bar bar-nav">
+	<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+	<h1 class="title">图书</h1>
+    <img src="images/circle-s.png" id="un"/>
+	    <div  id="n">
+	    <div class="arrow"></div>
+		<ul>
+		<li><img src="images/spxq_icon_shouye@2x.png" ><a href="books.html">首页</a></li>
+		<li><img src="images/spxq_icon_wode@2x.png" ><a>我的</a></li>
+		<li><img src="images/spxq_icon_sousuo@2x.png" ><a>图书搜索</a></li>
+		<li><img src="images/spxx_icon_gouwuche@2x.png" ><a href="shop-store.html">购物车</a></li>
+		</ul>
+		</div>
+	
+</header>
+	
+<!---图书信息---->
+<img class="book-img" src="images/book.jpg"/>
+<div class="letter">
+<p class="book-title">万历十五年</p>
+<p class="author">作者：<span>黄仁宇</span></p>
+<p class="time">出版时间：<span>2014-01-01</span></p>
+<p class="price">价格：<span>￥24.70<span></p>
+<p class="sale">优惠活动：<span>满200减100</span></p>
+</div>
+	
+<!----图书简介------>
+<div class=book-intro>
+	<h1 class="intro-title">内容简介</h1>
+	<p  class="intro-content"id="intro-content">1587年的历史事件也是以后掀起波澜的机缘。换一个视角来解读历史，世界变得更立体。1587年，在西欧历史上为西班牙舰队全部出动征英的前一年。当年，在明朝发生了若干为历史学家所易于忽视的事件。这些事件，表面看来虽似末端小节，但实质上却是以前发生大事的症结，也是将在以后掀起波澜的机缘。其间关系因果，恰为历史的重点。其著作主旨在书中末段看出：“当一个人口众多的国家，各人行动全凭儒家简单粗浅而又无法固定的原则所限制，而法律又缺乏创造性，则其社会发展的程度，必然受到限制。即便是宗旨善良，也不能补助技术之不及。”</p>
+    <a class="more"id="check" onclick="checkAll()">查看详情</a>
+</div>
+<!-----图书推荐------>
+<div class="recommend" id="recommend">
+	<h1 class="intro-title">商品推荐</h1>
+    <div class="book-gr">
+		<div class="book">
+			<img src="images/ts_img_keji@3x.png"/>
+			<div class="tp">
+				<p class="book-title">万历十五年</p>
+				<p class="price">价格：<span>￥24.70<span></p>
+			</div>
+		</div>	
+
+        <div class="book">
+			<img src="images/ts_img_keji@3x.png"/>
+			<div class="tp">
+				<p class="book-title">万历十五年万历十五年</p>
+				<p class="price">价格：<span>￥24.70<span></p>
+			</div>
+		</div>	
+
+        <div class="book">
+			<img src="images/ts_img_keji@3x.png"/>
+			<div class="tp">
+				<p class="book-title">万历十五年</p>
+				<p class="price">价格：<span>￥24.70<span></p>
+			</div>
+		</div>	
+		
+		
+		
+	</div>
+</div>
+<!-----底部按钮------->
+<div id="test">
+	<footer>
+	    <div class="store-img"><img src="images/spxq_icon_gouwuche@3x.png" /><p class="store-number">0</p></div>
+	    <a class="add-cart" >加入购物车</a>
+		<a class="buy" href="order-check.html">立即购买</a>
+		
+		
+	</footer>
+</div>
+
+</div>
+<script type="text/javascript">
+    
+	window.onload=function t(){
+	//按钮固定在底部
+		var w=document.body.clientWidth;
+		var test=document.getElementById("test");
+		test.style.width=w+'px';
+	    var h = test.offsetHeight;
+		 document.getElementById("recommend").style.marginBottom=h+'px';
+		 //查看详情和收起
+		
+		    a=document.getElementById('intro-content').innerHTML;
+			var n=a.length;
+		    if(n>72){
+				b=a.slice(0,71);
+				document.getElementById('intro-content').innerHTML=b+"......";
+				}else{
+				document.getElementById('check').style.display="none";
+				}
+
+		
+	}
+
+</script>
+<script type="text/javascript"> 
+	    //查看详情和收起
+		function checkAll(){
+			   if(document.getElementById('check').innerHTML=="查看详情"){
+			   document.getElementById('check').innerHTML="收起";
+			   document.getElementById('intro-content').innerHTML=a;
+			   }else{
+			   document.getElementById('check').innerHTML="查看详情";
+			    document.getElementById('intro-content').innerHTML=b+"......";
+			   }
+		}
+	</script> 
+	
+<script type="text/javascript">
+    //定义禁止冒泡的方法
+    var stop = function(e){
+		              e.stopPropagation();
+					  }
+	//获取元素，定义方法，添加事件。实现点击后展开导航的效果
+    var n = document.getElementById('n');
+	 var un = document.getElementById('un');
+	function unfold(){
+				if(n.style.display==''){
+			    n.style.display='block';
+				}
+				}
+	un.addEventListener("click",unfold,false);
+	un.addEventListener("click",stop,false);
+	//获取body元素，定义方法，添加事件。实现点击其他区域收起导航的效果
+	//var other = document.getElementsByTagName('body')[0];
+	var other = document.getElementById('container');
+	function fold(){
+				if(n.style.display=='block'){
+				n.style.display='';}}
+	other.addEventListener("click",fold,false);
+</script>
+
+
+<script type="text/javascript">
+//点击加入购物车后，购物车商品数量加1
+	var storeNumber = document.getElementsByClassName('store-number')[0].innerHTML;
+	var addCart = document.getElementsByClassName('add-cart')[0];
+	function addNumber(){
+		storeNumber++;
+		document.getElementsByClassName('store-number')[0].innerHTML=storeNumber;
+	}
+	addCart.addEventListener("click",addNumber,false);
+	
+
+</script>
+</body> 
+
+</html>

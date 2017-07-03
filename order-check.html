@@ -1,0 +1,232 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+   <meta charset="UTF-8">
+<title></title> 
+<link rel="stylesheet" href="css/style1.css"/>
+<style>
+
+/*导航*/
+	header ul{
+			background-color:grey;
+			
+			font-size:2.5rem;
+			border-radius:10px;}
+			
+	header ul li{
+			list-style-type:none;
+			padding:1rem 1rem 1rem 0;
+			 border-bottom:solid 1px white;}
+			
+			
+			
+	header ul li img{
+	                 margin-right: 1rem
+					
+					 }
+	.arrow{
+	     position:absolute;
+		 right:3rem;
+		 top:1rem;
+		 width:0px;
+		 height:0px;
+	     border-width:0px 30px 30px 30px;
+		 border-color:grey transparent;
+		 border-style:solid;
+		 
+		}
+	#n{position:absolute;
+			right:2rem;
+			top:7rem;
+			display:none;
+			z-index:999;}
+/*图书列表（同books-list中的）*/
+		.book{
+			  display:flex;
+			  flex-direction:row;
+			  padding:1.5rem 0;
+			  border-top:solid 10px #F9F9F9;
+	         }
+			  
+		.book img{
+				width:25%;
+				margin-right:1rem;;
+				}
+			  
+		.letter{
+				display:flex;
+				flex-direction:column;
+				justify-content:space-between;
+				flex-wrap:wrap;
+				width:75%;}
+				
+		.letter p{margin:0px;}
+		
+		.book-title{overflow:hidden; 
+
+                   text-overflow:ellipsis;
+
+                   display:-webkit-box; 
+
+                   -webkit-box-orient:vertical;
+
+                   -webkit-line-clamp:2; }/*图书标题超过两行时省略号表示*/
+				   
+				   
+				   
+/*收货地址*/
+
+.add-address img{width:4rem;}	
+.add-address{text-align:center;}	
+.address-letter{width:90%;}	
+
+
+/*底部*/
+
+footer a {width:60%;text-align:center;padding:1.63125rem 0;color:white;background-color:#cc0000;}
+footer h1{width:40%;text-align:center;}
+footer{position:fixed; bottom:0px;background-color:white;}
+				   
+				   
+/*每块底部边框*/
+ .book,.address,.privilege{border-bottom:solid 20px #F9F9F9;}
+ .particulars,particulars h1{border-bottom:solid 10x #F9F9F9;}
+ footer{border-top:solid 1px grey;}
+ .address h1,.chose{border-bottom:solid 5px #F9F9F9;}
+ .add-address{border-top:solid 10x #F9F9F9;}
+ 
+ 
+
+ 
+ /*布局*/
+ .address-mes,.chose,.title-s,.delivery,.coupon,footer,.person{
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;}
+.address-mes{align-items:center;}
+			
+/*字体*/
+
+.address-mes,.chose ,.particulars p{font-size:2.25rem;}
+.add-address,.coupon-l,.chose ,footer a{font-size: 2.5rem;}
+.address-mes span,.address-s span,.coupon-l,.arrow2{color:grey;}
+.price-c{color:#cc0000}
+h1{font-size:2.5rem;}
+.arrow2{font-weight:10px;}
+.add-address a:visited{color:grey;}
+
+/*边距*/
+.address,.privilege,.particulars{padding:.5rem 2rem; }
+
+
+
+.person,.address-s{margin:0;}
+
+
+
+
+</style>
+<script type="text/javascript">
+	window.onload= function(){
+		var w=document.body.clientWidth;
+		var buybt = document.getElementById("buybt");
+		 buybt.style.width=w+'px';
+		 var h = buybt.offsetHeight;
+		 document.getElementById("particulars").style.marginBottom=h+'px';;
+		}
+
+</script>
+</head> 
+<body> 
+<div id="container">
+<!---标题、返回和顶部导航---->
+<header class="bar bar-nav" >
+	<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+	<h1 class="title">图书</h1>
+    <img src="images/circle-s.png" id="un"/>
+	    <div  id="n">
+	    <div class="arrow"></div>
+		<ul>
+		<li><img src="images/spxq_icon_shouye@2x.png" ><a href="books.html">首页</a></li>
+		<li><img src="images/spxq_icon_wode@2x.png" ><a>我的</a></li>
+		<li><img src="images/spxq_icon_sousuo@2x.png" ><a>图书搜索</a></li>
+		<li><img src="images/spxx_icon_gouwuche@2x.png" ><a href="shop-store.html">购物车</a></li>
+		</ul>
+		</div>
+</header>
+
+<!-------图书--------->
+<div class="book"onclick="window.open('book-detail.html')">
+	<img src="images/ts_img_jiaoyu@3x.png"/>
+	<div class="letter">
+		<p class="book-title">万历十五年</p>
+		<div class="book-atp">
+			<p class="author">作者：<span>黄仁宇</span></p>
+			<p class="time">出版时间：<span>2014-01-01</span></p>
+			<p class="price">价格：<span>￥24.70<span></p>
+		</div>
+    </div>
+</div>
+<!-------收货地址-------->
+<div class="address">
+    <h1>收货地址</h1>
+	<div class="address-mes" onclick="window.location='manage-address.html'">
+		<div class="address-letter">
+			<div class="person"><p>收货人：<span>罗楠</span></p><p> 手机号码：<span>13372707178</span></p></div>
+			<p class="address-s">收货地址：<span>重庆市江北区大石坝东原D7</span></p>
+		</div>
+		<p class="arrow2">></p>
+	</div>
+	<p class="add-address"><a href="add-address.html"><img src="images/add.png"/>点击添加收货地址</a></p>
+	
+</div>
+<!-------选择优惠-------->
+<div class="privilege">
+	<p class="chose"><span>选择优惠</span><span class="arrow2">></span></p>
+	<p class="coupon-l">10元优惠券</p>
+</div>
+<!-------订单明细------->
+<div class="particulars" id="particulars">
+	<h1>订单明细</h1>
+	<p class="title-s"><span>万历十五年</span><span>x1</span><span class="price-c">￥45</span></p>
+
+	<p class="delivery"><span>配送费</span><span  class="price-c">+￥6</span></p>
+	<p class="coupon"><span>10元优惠券</span><span  class="price-c">-￥10</span></p>
+</div>
+<!-------底部确认支付按钮----------->
+<footer id="buybt">
+	<h1  class="price-c">合计：￥41</h1>
+	<a href="">确认支付</a>
+</footer>
+</div>
+<script type="text/javascript">
+    //跟book-detail那个页面一毛一样，把这段提出来生成一个Js文件
+    //定义禁止冒泡的方法
+    var stop = function(e){
+		              e.stopPropagation();
+					  }
+	//获取元素，定义方法，添加事件。实现点击后展开导航的效果
+    var n = document.getElementById('n');
+	 var un = document.getElementById('un');
+	function unfold(){
+				if(n.style.display==''){
+			    n.style.display='block';
+				}
+				}
+	un.addEventListener("click",unfold,false);
+	un.addEventListener("click",stop,false);
+	//获取body元素，定义方法，添加事件。实现点击其他区域收起导航的效果
+	//var other = document.getElementsByTagName('body')[0];
+	var other = document.getElementById('container');
+	function fold(){
+				if(n.style.display=='block'){
+				n.style.display='';}}
+	other.addEventListener("click",fold,false);
+	
+	
+	
+				
+    
+</script>
+</body> 
+</html>

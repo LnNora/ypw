@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>管理地址</title>
+	<style>
+	/*收货地址同order-check*/
+
+		.address-letter{width:90%;}	
+		.address-mes{font-size:2.25rem;}
+        .address-mes span{color:grey;}
+		.address-mes,.person{
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;}
+           .address-mes{align-items:center;}
+		/*边距同order-check*/
+		 .person,.address-s{margin:0;}
+		 .address{padding:.5rem 2rem;  }
+		
+	/*顶部同add-address*/
+	.bar-nav{justify-content:flex-start;}
+	 h1{margin-left:25%;}
+	 
+	 /*按钮同add-address*/
+	 .add{display:block;
+		width:100%;
+		text-align:center;
+		padding:1.63125rem 0;
+		color:white;
+		background-color:#cc0000;
+		margin-top:1rem;
+		}
+    /*按钮字体同add-address*/
+	.add{font-size:2.6875rem;}
+	
+	
+	
+	/*选中时样式*/
+	.address-mes{position:relative;}
+	.radio-img{
+	   display:inline-block;
+	   width:5rem;
+	   height:5rem;
+	   background-image:url(images/wdshdz_btn_n@2x.png);
+	   background-repeat:no-repeat;
+	   position:absolute;
+	   left:.5rem;
+	   top:4rem;
+	   z-index:-1;
+	   }
+
+		.myradio{
+        opacity:0;
+		filter: alpha(opacity=0);
+		width:4rem;
+		height:4rem;
+		}	 
+			 
+		.address-letter{margin-left:2rem;}
+
+	</style>
+	<link rel="stylesheet" href="css/style1.css">
+	</head>
+	<body>
+		<!---标题、返回---->
+		<header class="bar bar-nav" >
+			<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+			<h1 class="title">管理收货地址</h1>
+    
+		</header>
+		
+		<!-------收货地址-------->
+	
+		<div class="address">
+		
+			<div class="address-mes"  >
+			     <span class="radio-img"></span>
+			    <input type="radio" name="my-radio" checked="true" class="myradio">
+				<div class="address-letter" onclick="window.location='add-address.html'">
+					<div class="person"><p>收货人：<span>罗楠</span></p><p> 手机号码：<span>13372707178</span></p></div>
+					<p class="address-s">收货地址：重庆市江北区大石坝东原D7</p>
+				</div>
+				<p class="arrow" onclick="window.open('add-address.html')">></p>
+			</div>
+	
+		</div>
+		
+		<div class="address">
+		
+			<div class="address-mes" >
+			     <span class="radio-img"></span>
+			    <input type="radio" name="my-radio"  class="myradio">
+				<div class="address-letter" onclick="window.open('add-address.html')">
+					<div class="person"><p>收货人：<span>罗楠</span></p><p> 手机号码：<span>13372707178</span></p></div>
+					<p class="address-s">收货地址：重庆市江北区大石坝东原D7</p>
+				</div>
+				<p class="arrow" onclick="window.open('add-address.html')">></p>
+			</div>
+	
+		</div>
+		<a class="add" href="add-address.html">添加新地址</a>
+		
+	<script type="text/javascript">
+	    //获取radio数组
+		var objects = document.getElementsByName('my-radio');
+		//声明函数，如果radio被选中,input的背景图就为s；否则input的背景图就为n.
+		function changeChkimg(){
+			var chk = 0;
+			for(i=0;i<objects.length;i++){
+			var chkimg  = document.getElementsByClassName('radio-img')[i];
+				if(objects[i].checked){
+				chk=i;
+			    chkimg.style.backgroundImage ="url(images/wdshdz_btn_s@2x.png)";
+				}else{
+				chkimg.style.backgroundImage ="url(images/wdshdz_btn_n@2x.png)";
+				}
+				
+			}	
+			
+		}
+		//为每一个radio绑定点击事件，点击后调用上面的函数
+		for(j=0;j<objects.length;j++){
+			objects[j].addEventListener('click',changeChkimg,false);
+			}
+	    //打开页面时，即执行函数，使默认选中的radio，input背景图为s
+		window.addEventListener('load',changeChkimg,false);
+	</script>
+		
+	</body>
+</html>

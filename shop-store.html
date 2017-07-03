@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>购物车</title>
+		<link rel="stylesheet" href="css/style1.css">
+		<style>
+		/*顶部同add-address*/
+	.bar-nav{justify-content:flex-start;}
+	 h1{margin-left:25%;}
+	 
+	 .story{
+			display:flex;
+			flex-direction:row;
+			}
+	.story img{
+			    width:25%;
+			    margin-right:1rem;}
+				
+	
+	.letter,.others{
+				display:flex;
+				flex-direction:column;
+				justify-content:space-between;
+				}
+		
+	.book-title,.others p{margin:0px;}
+	
+	.story{
+			margin:2rem;
+			border-bottom:solid 10px #F9F9F9;}
+			
+			
+	
+			
+			
+			
+	/*底部*/
+	footer{
+			display:flex;
+			flex-direction:row;
+			justify-content:space-between;
+			align-items:center;
+			border-top:solid 1px;
+			}
+	#test{
+	        position:fixed;
+			bottom:0;}
+	footer p,footer a{
+			margin:0px;padding:1rem;
+			text-align:center;
+			}
+	.amount{width:40%;color:#cc0000;}
+	.account{width:30%;background-color:#cc0000;}
+	footer p{width:30%;border-right:solid 1px grey;}
+	
+	   /*字体*/
+	    .others{font-size:2.1875rem;}
+		.title{}
+		footer{font-size:3rem;}
+		
+		a:visited{color:white;}
+		
+		
+		/*多选框*/
+		
+		
+		.story{position:relative;}
+		.storychk,.chk-img,.chkall-img,.chkall{
+			width:4rem;
+			height:4rem;
+		}
+		    
+		.chk-img,.chkall-img{
+			background-image:url(images/wdshdz_btn_n@3x.png);
+			background-size:4rem 4rem;
+			
+		}
+		.chk-img{
+		    position:absolute;
+			right:2rem;
+			top:4rem;
+			z-index:-1;
+			background-repeat:no-repeat;}
+		.storychk{
+			position:relative;
+			top:3.5rem;
+			left:23rem;
+			opacity:0;
+			
+		}
+		/*全选*/
+		.chkall-img,.chkall{
+			position:absolute;
+		    left:1rem;
+			}
+		.chkall-img{z-index:-1;}
+		.chkall{opacity:0;}
+        		
+		</style>
+		
+		
+		<script type="text/javascript">
+	window.onload=function t(){
+		var w=document.body.clientWidth;
+		var test=document.getElementById("test");
+		test.style.width=w+'px';
+	    var h = test.offsetHeight;
+		 document.getElementById("list").style.marginBottom=h+'px';;
+	}
+
+</script>
+	</head>
+	<body>
+	<!---标题、返回---->
+		<header class="bar bar-nav" >
+			<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+			<h1 class="title">购物车</h1>
+    
+		</header>
+		
+		<!----购物车商品---->
+		<div id="list">
+		<div class="story">
+			<img src="images/ts_img_jiaoyu@3x.png"/>
+			<div class="letter">
+				<p class="book-title">万历十五年</h1>
+				<div class="others" >
+					<p>价格：￥<span class="price">30</span></p>
+					<p>数量不会做</p>
+				</div>
+			</div>
+			<input type="checkbox" name="story-chk" class="storychk"/>
+			<span class="chk-img"></span>
+		</div>
+		
+		<div class="story">
+			<img src="images/ts_img_jiaoyu@3x.png"/>
+			<div class="letter">
+				<p class="book-title">万历十五年</h1>
+				<div class="others" >
+					<p>价格：￥<span class="price">40.9</span></p>
+					<p>数量不会做</p>
+				</div>
+			</div>
+			<input type="checkbox" name="story-chk" class="storychk"/>
+			<span class="chk-img"></span>
+		</div>
+		
+		<div class="story">
+			<img src="images/ts_img_jiaoyu@3x.png"/>
+			<div class="letter">
+				<p class="book-title">万历十五年</h1>
+				<div class="others" >
+					<p>价格：￥<span class="price">51.2</span></p>
+					<p>数量不会做</p>
+				</div>
+			</div>
+			<input type="checkbox" name="story-chk" class="storychk"/>
+			<span class="chk-img"></span>
+		</div>
+		
+		<div class="story">
+			<img src="images/ts_img_jiaoyu@3x.png"/>
+			<div class="letter">
+				<p class="book-title">万历十五年</h1>
+				<div class="others" >
+					<p>价格：￥<span class="price">60</span></p>
+					<p>数量不会做</p>
+				</div>
+			</div>
+			<input type="checkbox" name="story-chk" class="storychk"/>
+			<span class="chk-img"></span>
+		</div>
+		</div>
+	
+	<!---底部按钮--->
+	<div id="test">
+	<footer>
+	    <p>
+			<input type="checkbox" name="chkall" class="chkall"/>
+			<span class="chkall-img"></span>
+			全选
+		</p>
+	    <a class="amount" >合计：￥<span id="story-amount">0</span></a>
+		<a class="account" href="order-check.html">结算（<span id="story-num">0</span>）</a>
+	</footer>
+	</div>
+    
+	<script type = "text/javascript">
+	
+	    //选中和未选中checked时的样式，跟manage-address页面那个一毛一样，可以重构一下函数啊
+		
+		var chk = document.getElementsByName('story-chk');
+		var chkImg = document.getElementsByClassName('chk-img');
+		var storyNum = document.getElementById('story-num');
+		var storyPrice = document.getElementsByClassName('price');
+		var StoryAmount = document.getElementById('story-amount');
+		var chkall = document.getElementsByName('chkall')[0];
+		var chkallimg = document.getElementsByClassName('chkall-img')[0];
+		//选中时用图s，未选中时用图n
+		//下方结算数量的动态变化
+		//下方结算金额的动态变化
+		function changeChkImg(){
+		var num = 0;
+		var amount = 0;
+		var chknum = 0; //选中radio的个数
+		for(i=0;i<chk.length;i++){
+			if(chk[i].checked){
+				chkImg[i].style.backgroundImage ="url(images/wdshdz_btn_s@3x.png)";
+				num++;
+				amount+=parseFloat(storyPrice[i].innerHTML);
+				chknum++; //如果该radio为选中状态，那么chknum数量加1
+			}else{
+			    chkImg[i].style.backgroundImage="url(images/wdshdz_btn_n@3x.png)";}
+		}
+		//如果选中的radio等于radio总数，则全选radio被选中；否则全选radio不被选中
+		if(num==chk.length){
+			chkall.checked = true;
+			chkallimg.style.backgroundImage ="url(images/wdshdz_btn_s@3x.png)";
+		}else{
+			chkall.checked=false;
+			chkallimg.style.backgroundImage ="url(images/wdshdz_btn_n@3x.png)";}
+		storyNum.innerHTML = num; //结算数量
+		StoryAmount.innerHTML = amount.toFixed(2);//结算总金额
+		
+	}
+	    
+	   //用遍历为每个checked添加事件
+		for(j=0;j<chk.length;j++){
+			chk[j].addEventListener('click',changeChkImg,false);
+		}
+		
+		
+		//全选
+		function all(){
+			if(chkall.checked){
+				for(i=0;i<chk.length;i++){
+					chk[i].checked=true;
+					chkallimg.style.backgroundImage ="url(images/wdshdz_btn_s@3x.png)";
+				}
+			}else{
+					for(i=0;i<chk.length;i++){
+					chk[i].checked=false;
+					chkallimg.style.backgroundImage ="url(images/wdshdz_btn_n@3x.png)";
+				}
+				}
+			
+		}
+		chkall.addEventListener('click',all,false);
+		chkall.addEventListener('click',changeChkImg,false);
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	</body>
+</html>

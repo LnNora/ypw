@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+   <meta charset="UTF-8">
+<title>px和rem的转换 </title> 
+<script type="text/javascript">
+	function change(){
+		var p1=document.getElementById("p1").value;
+		var r1=p1/16;
+		document.getElementById("r1").innerHTML=r1;
+	}
+	
+	function change2(){
+		var r2=document.getElementById("r2").value;
+		var p2=r2*16;
+		document.getElementById("p2").innerHTML=p2;
+	}
+
+</script>
+</head> 
+<body>
+	<p>请输入PX:</p>
+	<input type="text" id="p1"/>
+	<input type="button" id="btn" value="转换"onclick="change()"/>
+	<p>转换为rem是：</p>
+	<p id="r1"></p>
+	===========================================================
+	<p>请输入REM:</p>
+	<input type="text" id="r2"/>
+	<input type="button" id="btn2" value="转换"onclick="change2()"/>
+	<p>转换为px是：</p>
+	<p id="p2"></p>
+<body>

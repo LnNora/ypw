@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no">
+    <title>图书</title>
+	<link rel="stylesheet" href="css/style1.css"/>
+		
+		<style>
+	    /*图书分类布局*/
+	     ul{    
+		        padding:0px;
+		        display:flex;
+				flex-direction:row;
+				flex-wrap:wrap;}
+		li {   list-style-type:none;
+				display:flex;
+				flex-direction:column;
+				align-items:center;
+				width:24.7%;
+				margin-bottom:2.5rem;
+			
+				}
+	
+		a{  text-decoration:none; }
+	
+	    
+		
+		/*字体*/
+		.book a,.story_search,.icon-left{ font-size:2.1875rem;}
+		.book a{color:black;}
+		h1{font-size:2.8625rem;}
+		.book h1{margin-left:1.875rem;font-size:2.5rem}
+		
+		
+		
+		
+		
+		/*搜索*/
+		.story_search2{
+				display:flex;
+				justify-content:flex-start;
+				align-items:center;
+				background:#cc0000;
+				padding:1.875rem;
+				position:relative;
+				top:-89.8rem;
+				visibility:hidden;
+			
+				}
+	
+		form{width:75%;margin-right:3rem;}
+		.searchInput{
+				font-size:2.1875rem;
+				border:none;
+				border-radius:10px;
+				background-image:url(images/story_search.png);
+				background-repeat:no-repeat;
+				background-position:1rem 1rem;
+				padding-left:5rem;
+			    width:100%;
+				height:3.8rem;
+				
+				
+				}
+	    
+		.clear{
+			width:3rem;height:3.8rem;
+			position:absolute;
+		    right:27%;top:27%;
+			background-image:url(images/clear.png);
+			background-repeat:no-repeat;
+			background-position:center;
+			display:none;
+			}
+		.quik{font-size:2.1875rem;color:white;}
+		
+		
+	    
+		</style>
+  </head>
+  <body>
+  <!---标题、返回和购物车---->
+<header class="bar bar-nav" >
+	<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+	 <h1 class="title">图书</h1>
+    <div class="hegwc" onclick="window.location='shop-store.html'"> <img src="images/gwc.png" /><span></span></div> 
+   
+</header>
+<main>
+  <!---搜索框--->
+<section class="mr22">
+        <div class="story_search">
+        	<div class="story_list">
+            	<div class="list-l"><img src="images/story_search.png" /></div>
+                <div class="list-r"><a>请输入商品名称</a></div>
+            </div>
+        </div>
+</section>
+
+<!---图书一级分类---->
+<section class="selbor">
+	<div class="book">
+    	<h1>图书分类</h1>
+	
+        <ul>
+        	<li onclick="window.location='books-list.html'">
+			<img src="images/ts_img_cglz@3x.png"/>
+			<a href="#" class="active">文艺</a>
+			</li>
+            <li>
+			<div><img src="images/ts_img_jiaoyu@3x.png"/></div>
+			<a href="#" >少儿</a>
+			</li>
+            <li>
+			<div><img src="images/ts_img_cglz@3x.png"/></div>
+			<a href="#" >成功励志</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_jjgl@3x.png"/></div>
+			<a href="#" >人文社科</a>
+			</li>
+            <li>
+			<div><img src="images/ts_img_keji@3x.png"/></div>
+			<a href="#" >科技</a>
+			</li>
+            <li>
+			<div><img src="images/ts_img_jjgl@3x.png"/></div>
+			<a href="#" >经济管理</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shenghuo@3x.png"/></div>
+			<a href="#" >生活</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_jiaoyu@3x.png"/></div>
+			<a href="#" >教育</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shaoer@3x.png"/></div>
+			<a href="#" >进口原版图书</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shaoer@3x.png"/></div>
+			<a href="#" >杂志/期刊</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shaoer@3x.png"/></div>
+			<a href="#" >特价图书</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shaoer@3x.png"/></div>
+			<a href="#" >综合性图书</a>
+			
+			</li>
+            <li>
+			<div><img src="images/ts_img_shaoer@3x.png"/></div>
+			<a href="#" >低折扣图书</a>
+			
+			</li>
+        </ul>
+    </div>
+</section>
+</main>
+<div class="story_search2">
+    <form action=''><input type="search"  class=" searchInput" placeholder="请输入商品名称"/></form>
+	<div class="clear"></div>
+	<a class="quik">取消</a>
+</div>
+
+<script type="text/javascript">
+	//搜索
+	var search2 = document.getElementsByClassName('story_search2')[0];
+	var searchInput = document.getElementsByClassName('searchInput')[0];
+	var clear = document.getElementsByClassName('clear')[0];
+	var quik = document.getElementsByClassName('quik')[0];
+	//点击弹出搜索框，页面加透明度
+	var chks = document.getElementsByClassName('story_search')[0];
+	function changeOp(){
+		search2.style.visibility = "visible";
+		document.getElementsByTagName('main')[0].style.opacity = '0.1';
+		searchInput.focus();
+	}
+	chks.addEventListener('click',changeOp,false);
+	//由于已脱离文档流，故在Js中设置宽度,后来改成没脱了，晕
+	function setWidth(){
+	    var bar = document.getElementsByClassName('bar-nav')[0];
+		var w = document.bar.clientWidth;
+		var search = document.getElementsByClassName('story_search2')[0];
+		search.style.width = w + 'px';
+		
+		}
+    window.addEventListener('load',setWidth,false);
+	//输入文本和未输入文本时的变化
+	
+	function isText(){
+	    if(searchInput.value!==''){
+		clear.style.display='block';
+		}else{
+		clear.style.display='';
+		}
+	}
+	searchInput.addEventListener('input',isText,false);
+	//点击clear时，清除输入框
+	function clkclear(){
+		searchInput.value=null;
+		searchInput.focus();
+		clear.style.display='';
+	}
+	
+	clear.addEventListener('click', clkclear,false);
+	//点击取消时，隐藏搜索框，恢复透明度
+	function clkquik(){
+		search2.style.visibility = "hidden";
+		document.getElementsByTagName('main')[0].style.opacity = '1';
+	}
+	quik.addEventListener('click',clkquik,false);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+1.在radio前加一个span
+2.设置span大小，将span的背景图设为需要的图片
+3.将span的position设为absolute,放到合适的位置
+4.可调整radio和span的宽高，至合适的大小
+5.将radio的透明度设为0
+6.用for循环获取被选中的radio，判断，如果radio是checked的，就替换input的背景图，否则还是用以前的背景图
+7.用for循环为每一个radio绑定点击事件，被点击的radio,调用6中的函数
+8.实现默认选中的radio为替换后的背景图，只需要为window添加一个事件即可
+  window.addEventListener('load',changeChkimg,false);
+
+用JS改变背景图：chkimg.style.backgroundImage ="url(images/wdshdz_btn_n@2x.png)"

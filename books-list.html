@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+<html>
+<head> 
+   <meta charset="UTF-8">
+<title>文档标题</title> 
+
+<link rel="stylesheet" href="css/style1.css"/>
+
+<style>
+	    /*导航*/
+		.navigation ul{
+				display:flex;
+				flex-direction:row;
+				justify-content:flex-start;
+				flex-wrap:nowrap;
+				overflow:auto;
+				}
+		.navigation ul li{
+				list-style-type:none;
+				flex-shrink:0;
+				margin-right:3rem;}
+		.navigation ul li:first-child{border-bottom:solid 5px #cc0000;}
+	
+		/*图书列表*/
+		.book{
+			  display:flex;
+			  flex-direction:row;
+			  padding:1.5rem 0;
+			  border-bottom:solid 10px #F9F9F9;}
+			  
+		.book img{
+				width:25%;
+				margin-right:1rem;
+				}
+			  
+		.letter{
+				display:flex;
+				flex-direction:column;
+				justify-content:space-between;
+				flex-wrap:wrap;
+				width:75%;}
+				
+		.letter p{margin:0px;}
+		
+		.book-title{overflow:hidden; 
+
+                   text-overflow:ellipsis;
+
+                   display:-webkit-box; 
+
+                   -webkit-box-orient:vertical;
+
+                   -webkit-line-clamp:2; }/*图书标题超过两行时省略号表示*/
+	
+	
+		/*字体*/
+		.navigation{font-size:2.0625rem;}/*导航*/
+		
+		
+		
+		
+		
+	
+	</style>
+</head> 
+<body> 
+ <!---标题、返回和购物车---->
+<header class="bar bar-nav" >
+	<a class="icon icon-left" href="javascript:history.go(-1);"><返回</a>
+	 <h1 class="title">图书</h1>
+    <div class="hegwc"> <img src="images/gwc.png" onclick="window.location='shop-store.html'"/><span></span></div> 
+	
+	
+   
+</header>
+<!---导航----->
+<nav class="navigation" id="wrapper">
+	<ul>
+		<li>推荐</li>
+		<li>小说</li>
+		<li>文学</li>
+		<li>艺术</li>
+		<li>传记</li>
+		<li>动漫/幽默</li>
+		<li>文学</li>
+		<li>艺术</li>
+		<li>传记</li>
+		<li>动漫/幽默</li>
+
+    </ul>
+</nav>
+
+
+  <!---搜索框--->
+<section class="mr22">
+        <div class="story_search">
+        	<div class="story_list">
+            	<div class="list-l" ><img src="images/story_search.png" /></div>
+                <div class="list-r"><a data-reveal-id="myModal" data-animation="none" >请输入商品名称</a></div>
+            </div>
+        </div>
+</section>
+
+<!------图书列表----->
+<div class="book"onclick="window.location='book-detail.html'">
+	<img src="images/ts_img_jiaoyu@3x.png"/>
+	<div class="letter">
+		<p class="book-title">万历十五年</p>
+		<div class="book-atp">
+			<p class="author">作者：<span>黄仁宇</span></p>
+			<p class="time">出版时间：<span>2014-01-01</span></p>
+			<p class="price">价格：<span>￥24.70<span></p>
+		</div>
+    </div>
+</div>
+<div class="book">
+	<img src="images/ts_img_jiaoyu@3x.png"/>
+	<div class="letter">
+		<p class="book-title">万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年</p>
+		<div class="book-atp">
+			<p class="author">作者：<span>黄仁宇</span></p>
+			<p class="time">出版时间：<span>2014-01-01</span></p>
+			<p class="price">价格：<span>￥24.70<span></p>
+		</div>
+    </div>
+</div>
+<div class="book">
+	<img src="images/ts_img_jiaoyu@3x.png"/>
+	<div class="letter">
+		<p class="book-title">万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年万历十五年</p>
+		<div class="book-atp">
+			<p class="author">作者：<span>黄仁宇</span></p>
+			<p class="time">出版时间：<span>2014-01-01</span></p>
+			<p class="price">价格：<span>￥24.70<span></p>
+		</div>
+    </div>
+</div>
+
+<div class="book">
+	<img src="images/ts_img_jiaoyu@3x.png"/>
+	<div class="letter">
+		<p class="book-title">万历十五年</p>
+		<div class="book-atp">
+			<p class="author">作者：<span>黄仁宇</span></p>
+			<p class="time">出版时间：<span>2014-01-01</span></p>
+			<p class="price">价格：<span>￥24.70<span></p>
+		</div>
+    </div>
+</div>
+</body> 
+</html>
