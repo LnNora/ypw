@@ -1,0 +1,99 @@
+html{height: 100%;}
+body{
+	position: relative;
+	height: 100%;
+}
+
+
+/*布局*/
+.layout{
+	display:flex;
+	flex-direction:row;
+	justify-content:flex-start;
+	align-items:center;
+	border-bottom:solid 3px #F9F9F9;
+}
+
+
+
+.bar-nav{justify-content:flex-start;}
+h1{margin-left:25%;}
+li a{margin-left:1.4rem;}
+
+/*文字框*/
+input{
+	border:none;
+	width:80%;}
+	/*底部*/
+	.save{
+		display:block;
+		width:100%;
+		text-align:center;
+		padding:1rem 0;
+		color:white;
+		background-color:#cc0000;
+		position:fixed; 
+		bottom:0px;}
+
+
+		/*字体*/
+		ul,input,a{font-size:1rem;}
+		li a, input{color:grey;}
+
+/*选择地区*/
+.selectPlace{
+	height: 50%;
+	width: 100%;
+	position: fixed;
+	top: 50%;
+	background-color: white;
+	font-size: 0.8rem;
+	box-shadow: 0px 5px 30px black;
+}
+
+.selectPlace h1{
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 1rem 0;
+	font-size: 1rem;
+	color: #a3a3a5;
+}
+
+/*地区里面*/
+.selectDiv{
+			display: flex;
+			height: 69%;
+			overflow: scroll;
+
+	
+		}
+.select{
+		margin: 0 1rem;
+		
+		}
+.select div{
+			cursor: pointer;
+		}
+
+.option{
+	margin: 1rem 0;
+	
+}
+
+
+
+/*请选择*/
+#chooseDiv{
+	border-bottom: solid 1px #f2f2f2;
+	display: flex;
+}
+.choose,.chooseD{
+	margin: 0 1rem;
+	padding-bottom: 0.5rem;
+	color: red;
+	border-bottom: solid 1px red;
+}
+.choose{
+	visibility: hidden;
+}

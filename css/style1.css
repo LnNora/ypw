@@ -1,48 +1,46 @@
 body{margin:0px;
-     font-family:"Microsoft YaHei","黑体","宋体",sans-serif;}
+	font-family:"Microsoft YaHei","黑体","宋体",sans-serif;}
 
 	
-	    /*头部布局*/
-		header{
+	/*头部布局*/
+	header{
+		background:#cc0000;
+		display:flex;
+		flex-direction:row;
+		justify-content:space-between;
+		align-items:center;
+		color:white;
+		padding-right:1rem;}
+		.icon-left,.hegwc{color:white;margin:0.875rem;}
+		h1{ font-size:1.1rem;}
+		a{text-decoration:none;}
 		
-		       border:solid 1px;
-			   background:#cc0000;
-			   display:flex;
-			   flex-direction:row;
-			   justify-content:space-between;
-			   align-items:center;
-			   color:white;
-			   padding-right:3rem;}
-		    .icon-left,.hegwc{color:white;margin:1.875rem;}
-			h1{ font-size:1.1rem;}
-			a{text-decoration:none;}
-	
 		/*搜索框布局*/
 		.story_search{
-		 background:#F9F9F9;
-		  padding:1.25rem;
-		 }
-		  
-			.story_list{
-		      background:white;
-			  display:flex;
-			  align-items:center;
-			  padding:1.25rem;;
-			  }
-			 
-				.list-r{padding-left:2em;}
-				.list-l{margin-left:3.75rem;}
-				
-				.book a,.story_search,.icon-left{ font-size:2.1875rem;}
-				h1{font-size:2.8625rem;font-weight:normal}
-				
-			
-				
-	/*字体*/
-	    
+			background:#F9F9F9;
+			padding:1.25rem;
+		}
+		
+		.story_list{
+			background:white;
+			display:flex;
+			align-items:center;
+			padding:1.25rem;;
+		}
+		
+		.list-r{padding-left:2em;}
+		.list-l{margin-left:3.75rem;}
+		
 		.book a,.story_search,.icon-left{ font-size:2.1875rem;}
+		h1{font-size:2.8625rem;font-weight:normal}
+		
+		
+		
+		/*字体*/
+		
+		.book a,.story_search,.icon-left{ font-size:1rem;}
 		.book a{color:black;}
-		h1{font-size:2.8625rem;}
+		h1{font-size:1rem;}
 		.book h1{margin-left:1.875rem;font-weight:normal;font-size:2.5rem;}
 		/*图书列表页和图书详情页*/
 		.author,.time,.price,.sale,.intro-content,.more{font-size:2.1875rem;} /*图书信息*/

@@ -2,51 +2,11 @@
 <html>
 <head> 
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>新增地址</title> 
 <link rel="stylesheet" href="css/style1.css"/>
-<style>
-/*布局*/
-	.layout{
-			display:flex;
-			flex-direction:row;
-			justify-content:flex-start;
-			align-items:center;
-			border-bottom:solid 10px #F9F9F9;
-			}
+<link rel="stylesheet" href="css/add-address.css"/>
 
-	
-	
-	.bar-nav{justify-content:flex-start;}
-	 h1{margin-left:25%;}
-	 li a{margin-left:1.4rem;}
-	 
-/*文字框*/
-input{
-		border:none;
-		width:80%;}
-/*底部*/
-.save{
-		display:block;
-		width:100%;
-		text-align:center;
-		padding:1.63125rem 0;
-		color:white;
-		background-color:#cc0000;
-		position:fixed; 
-		bottom:0px;}
-
-	 
-/*字体*/
-ul,input,a{font-size:2.6875rem;}
-li a, input{color:grey;}
-</style>
-<script type="text/javascript">
-	window.onload= function(){
-		 var h = document.getElementById("save").offsetHeight;
-		 document.getElementById("f").style.marginBottom=h+'px';;
-		}
-
-</script>
 </head> 
 <body>
 <!---标题、返回---->
@@ -58,15 +18,7 @@ li a, input{color:grey;}
 <!---新增地址表单---->
 <ul id="f">
 	<li class="layout">
-	<p>省份：</p>
-	<a>请选择</a>
-	</li>
-	<li class="layout">
-	<p>城市：</p>
-	<a>请选择</a>
-	</li>
-	<li class="layout">
-	<p>区域：</p>
+	<p>所在地区：</p>
 	<a>请选择</a>
 	</li>
 	<li class="layout">
@@ -91,5 +43,234 @@ li a, input{color:grey;}
 	</li>
 </ul>
 <a class="save" id="save">保存地址</a>
+
+<div class="selectPlace">
+  <h1>所在地区</h1>
+  <div id="chooseDiv">
+  <div class="chooseD">请选择</div>
+  <div class="choose" data-id2="1">请选择</div>
+  <div class="choose" data-id2="2">请选择</div>
+  <div class="choose" data-id2="3">请选择</div>
+  </div>
+  <div class="selectDiv">
+    <div id="area" class="select" data-id="0"></div>
+    <div id="city" class="select" data-id="1"></div>
+    <div id="county" class="select" data-id="2"></div>
+    <div id="town" class="select" data-id="3"></div>
+  </div>
+</div>
+<script type="text/javascript">
+	window.onload= function(){
+		 var h = document.getElementById("save").offsetHeight;
+		 document.getElementById("f").style.marginBottom=h+'px';
+		}
+
+</script>
+
+
+<script type="text/javascript">
+  var areaList = [
+
+    {name:"北京市",
+    list:[{name:"直辖市",
+    list:[{name:"朝阳区",list:["管庄","北苑","定福庄"]},
+    {name:"西城区",list:["内环到二环里","二环到三环"]}]}
+    ]},
+
+    {name:"重庆市",
+    list:[{name:"直辖市",
+    list:[{name:"江北区",list:["内环以内","寸滩镇","大石坝镇"]},
+    {name:"渝北区",list:["城区","礼嘉镇","两路镇","王家镇","悦来镇","玉峰山镇","大盛镇","木耳镇"]}]}
+    ]},
+
+    {name:"上海市",
+    list:[{name:"直辖市",
+    list:[{name:"静安区",list:["城区"]},
+    {name:"宝山区",list:["罗店镇","大场镇","杨行镇","顾村镇","高境镇","庙行镇","宝山城市工业园区","月浦镇"]}]}
+    ]},
+
+    {name:"天津市",
+    list:[{name:"直辖市",
+    list:[{name:"东丽区",list:["全境"]},
+    {name:"和平区",list:["全境"]}]}
+    ]},
+
+    {name:"河北省",
+    list:[{name:"唐山市",
+    list:[{name:"路北区",
+    list:["城区","高新技术产业园区","果园乡"]},
+    {name:"路南区",
+    list:["城区","女织寨乡"]}]},
+    ]},
+
+    {name:"四川",
+    list:[{name:"成都市",
+    list:[{name:"武侯区",
+    list:["城区","城区","金花镇"]},
+    {name:"金牛区",
+    list:["城区","金牛乡"]}]},
+    ]},
+
+    {name:"云南省",
+    list:[{name:"大理州",
+    list:[{name:"大理市",
+    list:["大理镇","下关镇","喜洲镇"]},
+    {name:"洱源县",
+    list:["西山镇","三营镇","县城内"]}]},
+
+    {name:"红河州",
+    list:[{name:"个旧市",
+    list:["城区镇","锡城镇","沙甸镇"]},
+    {name:"开远市",
+    list:["城区","小龙潭镇","中和营镇"]}]},
+
+    {name:"西双版纳州",
+    list:[{name:"景洪市",
+    list:["普文镇","大渡港镇","基诺镇"]},
+    {name:"勐海县",list:["勐海镇","打洛镇"]}]}
+    ]}
+
+    ]
+    var area = document.getElementById('area');
+    var city = document.getElementById('city');
+    var county = document.getElementById('county');
+    var town = document.getElementById('town');
+    var options = document.getElementsByClassName('option');
+    var chooses = document.getElementsByClassName('choose');
+    var select = document.getElementsByClassName('select');
+//addOption方法：向指定下拉框添加option元素
+      function addOption(listName,level,obj){
+        var option = document.createElement('DIV');
+        option.innerHTML = listName;
+        option.value = listName;
+        level.appendChild(option);
+        option.obj = obj;
+        option.setAttribute("class","option");
+      }
+      
+      //点击Option显示请选择
+      function showChoose(evt){
+        var evt = evt||event;
+            evt = evt.target;
+        var index = evt.parentNode.dataset.id;
+        for(var i=index;i<chooses.length;i++){
+          chooses[i].style.visibility="hidden";
+        }
+      
+        chooses[index].style.visibility="visible";
+      }
+     //点击请选择，显示select
+      function showSelect(evt){
+         var evt = evt||event;
+            evt = evt.target;
+        var index = evt.dataset.id2;
+        select[index].style.visibility="visible";
+      }
+/*
+      function addDefaultOption(level){
+        var defaultOption = document.createElement('DIV');
+        defaultOption.innerHTML = "请选择";
+        defaultOption.value = "请选择";
+        level.appendChild(defaultOption);
+        defaultOption.setAttribute("class","option");
+      }*/
+        //遍历区域areaList数组，调用方法，三个实参是：数组每一项的name属性，area下拉框，数组的每一项
+      for(var i=0;i<areaList.length;i++){
+        addOption(areaList[i].name,area,areaList[i]);
+      }
+
+        //为每个option添加onclick事件
+      for(var i=0;i<options.length;i++){
+        options[i].addEventListener('click',changePlace,false);
+        options[i].addEventListener('click',showChoose,false);
+      }
+
+      //为每个请选择添加click事件
+      for(var i=0;i<chooses.length;i++){
+        chooses[i].addEventListener('click',showSelect,false);
+      }
+      for(var i=0;i<area.getElementsByClassName('option').length;i++){
+        area.getElementsByClassName('option')[i].addEventListener('click',isSpecial,false);
+      }
+      
+
+
+//changePlace方法，点击每个option时都触发此方法
+      function changePlace(evt){
+        if(evt){
+          var evt = evt||event;
+          evt = evt.target;}else{
+            evt = city.getElementsByClassName('option')[0];//如果有“请选择”就是[1]，没有就是[0]
+          }
+      
+       
+        //以下几行是为了获取当前节点的全部兄弟节点,放入数组allSelect
+        var allChild = evt.parentNode.parentNode.childNodes;
+        var allSelect = [];
+        var evtIndex = 100;
+        for(var i=0;i<allChild.length;i++){   
+          if(allChild[i].nodeName=='DIV'){
+            allSelect.push(allChild[i]);
+          }  
+        }
+        
+        //清空后面全部下拉框的option
+        for(var i=0;i<allSelect.length;i++){
+          if (allSelect[i]==evt.parentNode) {
+            evtIndex = i;
+          }
+          if(i>evtIndex){
+            var optionsLength = allSelect[i].childNodes.length;
+            //alert(laterOptions.length);
+            for(var j=0;j<optionsLength;j++){
+              allSelect[i].removeChild(allSelect[i].childNodes[0]);
+            }
+
+          }
+        }
+
+   
+ 
+        //获取下一级下拉框
+        var nextLevel = evt.parentNode.nextElementSibling; 
+        //addDefaultOption(nextLevel);
+        if(typeof evt.obj.list[0]!="string"){
+          for(var i=0;i<evt.obj.list.length;i++){
+            addOption(evt.obj.list[i].name,nextLevel,evt.obj.list[i]);//evt.obj.list代表目前下拉框选中option对象的list属性
+          }
+        }else{
+          for(var i=0;i<evt.obj.list.length;i++){
+               addOption(evt.obj.list[i],nextLevel,evt.obj.list[i]);//evt.obj.list代表目前下拉框选中option对象的list属性
+              }
+            }
+            nextLevel.style.visibility = "hidden";
+        //为每个option添加onclick事件
+        for(var i=0;i<options.length;i++){
+          options[i].addEventListener('click',changePlace,false);
+          options[i].addEventListener('click',showChoose,false);
+        }
+
+      }
+
+//isSpecial方法 判断选中的一级区域是不是直辖市
+  function isSpecial(evt){
+    var evt = evt||event;
+    evt = evt.target;
+      //获取目前下拉框选中的那个option
+      //var evtOption = evt.options[evt.options.selectedIndex];
+      if(evt.obj.list[0].name=="直辖市"){
+     //获取下一个兄弟节点，即下一级下拉框
+     var nextLevel = evt.nextElementSibling; 
+      //下级下拉框直接选中“直辖市”这个option,怎么选中这个？？？？？
+      //nextLevel.options.selectedIndex=1;
+      city.style.display="none";
+      changePlace();
+    }else{
+      city.style.display="block";
+    }
+  }
+
+</script>
+
 </body> 
 </html>
