@@ -46,14 +46,8 @@
 
 <div class="selectPlace">
   <h1>所在地区</h1>
-  <div id="chooseDiv">
-  <div class="chooseD">请选择</div>
-  <div class="choose" data-id2="1">请选择</div>
-  <div class="choose" data-id2="2">请选择</div>
-  <div class="choose" data-id2="3">请选择</div>
-  </div>
   <div class="selectDiv">
-    <div id="area" class="select" data-id="0"></div>
+    <div id="area" class="select" data-id="0"><div class="defaultOption">请选择</div></div>
     <div id="city" class="select" data-id="1"></div>
     <div id="county" class="select" data-id="2"></div>
     <div id="town" class="select" data-id="3"></div>
@@ -106,7 +100,7 @@
     {name:"四川",
     list:[{name:"成都市",
     list:[{name:"武侯区",
-    list:["城区","城区","金花镇"]},
+    list:["城区","金花镇"]},
     {name:"金牛区",
     list:["城区","金牛乡"]}]},
     ]},
@@ -136,8 +130,7 @@
     var county = document.getElementById('county');
     var town = document.getElementById('town');
     var options = document.getElementsByClassName('option');
-    var chooses = document.getElementsByClassName('choose');
-    var select = document.getElementsByClassName('select');
+
 //addOption方法：向指定下拉框添加option元素
       function addOption(listName,level,obj){
         var option = document.createElement('DIV');
@@ -148,53 +141,14 @@
         option.setAttribute("class","option");
       }
       
-      //点击Option显示请选择
-      function showChoose(evt){
-        var evt = evt||event;
-            evt = evt.target;
-        var index = evt.parentNode.dataset.id;
-        for(var i=index;i<chooses.length;i++){
-          chooses[i].style.visibility="hidden";
-        }
-      
-        chooses[index].style.visibility="visible";
-      }
-     //点击请选择，显示select
-      function showSelect(evt){
-         var evt = evt||event;
-            evt = evt.target;
-        var index = evt.dataset.id2;
-        select[index].style.visibility="visible";
-      }
-/*
-      function addDefaultOption(level){
+//addDefault方法：加入请选择
+ function addDefault(level){
         var defaultOption = document.createElement('DIV');
         defaultOption.innerHTML = "请选择";
-        defaultOption.value = "请选择";
         level.appendChild(defaultOption);
-        defaultOption.setAttribute("class","option");
-      }*/
-        //遍历区域areaList数组，调用方法，三个实参是：数组每一项的name属性，area下拉框，数组的每一项
-      for(var i=0;i<areaList.length;i++){
-        addOption(areaList[i].name,area,areaList[i]);
+        defaultOption.setAttribute("class","defaultOption");
+        //defaultOption.setAttribute("class","option");
       }
-
-        //为每个option添加onclick事件
-      for(var i=0;i<options.length;i++){
-        options[i].addEventListener('click',changePlace,false);
-        options[i].addEventListener('click',showChoose,false);
-      }
-
-      //为每个请选择添加click事件
-      for(var i=0;i<chooses.length;i++){
-        chooses[i].addEventListener('click',showSelect,false);
-      }
-      for(var i=0;i<area.getElementsByClassName('option').length;i++){
-        area.getElementsByClassName('option')[i].addEventListener('click',isSpecial,false);
-      }
-      
-
-
 //changePlace方法，点击每个option时都触发此方法
       function changePlace(evt){
         if(evt){
@@ -233,7 +187,8 @@
  
         //获取下一级下拉框
         var nextLevel = evt.parentNode.nextElementSibling; 
-        //addDefaultOption(nextLevel);
+        //加入请选择option
+        addDefault(nextLevel);
         if(typeof evt.obj.list[0]!="string"){
           for(var i=0;i<evt.obj.list.length;i++){
             addOption(evt.obj.list[i].name,nextLevel,evt.obj.list[i]);//evt.obj.list代表目前下拉框选中option对象的list属性
@@ -243,13 +198,16 @@
                addOption(evt.obj.list[i],nextLevel,evt.obj.list[i]);//evt.obj.list代表目前下拉框选中option对象的list属性
               }
             }
-            nextLevel.style.visibility = "hidden";
-        //为每个option添加onclick事件
+          //每个option都不可见，除了第一个请选择
+             for(var i=0;i<evt.obj.list.length;i++){
+              nextLevel.getElementsByClassName('option')[i].style.display="none";
+             }
+        //为每个option添加click事件
         for(var i=0;i<options.length;i++){
           options[i].addEventListener('click',changePlace,false);
-          options[i].addEventListener('click',showChoose,false);
         }
-
+        //为请选择添加click事件
+         nextLevel.getElementsByClassName('defaultOption')[0].addEventListener('click',showOption,false);
       }
 
 //isSpecial方法 判断选中的一级区域是不是直辖市
@@ -259,16 +217,44 @@
       //获取目前下拉框选中的那个option
       //var evtOption = evt.options[evt.options.selectedIndex];
       if(evt.obj.list[0].name=="直辖市"){
-     //获取下一个兄弟节点，即下一级下拉框
-     var nextLevel = evt.nextElementSibling; 
-      //下级下拉框直接选中“直辖市”这个option,怎么选中这个？？？？？
-      //nextLevel.options.selectedIndex=1;
-      city.style.display="none";
       changePlace();
+      city.style.display="none";
     }else{
       city.style.display="block";
     }
   }
+
+
+
+//showOption方法点击请选择，显示区域名称
+  function showOption(evt){
+   var evt = evt||event;
+   evt = evt.target; 
+   var level = evt.parentNode;
+   var options = level.getElementsByClassName('option');
+   for(var i=0;i<options.length;i++){
+      options[i].style.display="block";
+   }
+  }
+
+        //遍历区域areaList数组，调用方法，三个实参是：数组每一项的name属性，area下拉框，数组的每一项
+      for(var i=0;i<areaList.length;i++){
+        addOption(areaList[i].name,area,areaList[i]);
+      }
+
+        //为每个option添加onclick事件
+      for(var i=0;i<options.length;i++){
+        options[i].addEventListener('click',changePlace,false);
+      }
+
+      //为每个area中的option添加click事件
+      for(var i=0;i<area.getElementsByClassName('option').length;i++){
+        area.getElementsByClassName('option')[i].addEventListener('click',isSpecial,false);
+      }
+      
+
+
+
 
 </script>
 

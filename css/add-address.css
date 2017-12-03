@@ -58,6 +58,7 @@ input{
 	padding: 1rem 0;
 	font-size: 1rem;
 	color: #a3a3a5;
+	
 }
 
 /*地区里面*/
@@ -65,8 +66,7 @@ input{
 			display: flex;
 			height: 69%;
 			overflow: scroll;
-
-	
+			position: relative;
 		}
 .select{
 		margin: 0 1rem;
@@ -77,23 +77,18 @@ input{
 		}
 
 .option{
-	margin: 1rem 0;
+	margin: 2rem 0;
 	
 }
 
 
 
 /*请选择*/
-#chooseDiv{
-	border-bottom: solid 1px #f2f2f2;
-	display: flex;
-}
-.choose,.chooseD{
-	margin: 0 1rem;
-	padding-bottom: 0.5rem;
-	color: red;
+.defaultOption{
+	color:red;
 	border-bottom: solid 1px red;
-}
-.choose{
-	visibility: hidden;
+	width: 2.4rem;
+	padding-bottom: 0.4rem;
+	position: fixed;
+	background-color: white;
 }
